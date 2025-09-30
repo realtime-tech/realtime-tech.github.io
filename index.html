@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realtime Technologies</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2332 100%);
+            color: #e0e6ed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: #8b9dc3;
+            margin-bottom: 40px;
+        }
+
+        .search-container {
+            margin: 40px 0;
+            text-align: center;
+            animation: slideUp 0.6s ease-out 0.2s backwards;
+        }
+
+        #searchInput {
+            width: 100%;
+            max-width: 600px;
+            padding: 16px 24px;
+            font-size: 1.1em;
+            background: rgba(15, 28, 51, 0.6);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50px;
+            color: #e0e6ed;
+            outline: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        #searchInput::placeholder {
+            color: #6b7b9a;
+        }
+
+        #searchInput:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            animation: slideUp 0.6s ease-out 0.4s backwards;
+        }
+
+        .project-card {
+            background: rgba(15, 28, 51, 0.5);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: #667eea;
+            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.6em;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-description {
+            color: #a8b4ce;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #a5b4fc;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 12px 28px;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .source-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .source-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .demo-link {
+            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        }
+
+        .demo-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8b9dc3;
+            font-size: 1.2em;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Realtime Technologies</h1>
+            <p class="tagline">Building the future, one commit at a time</p>
+        </header>
+
+        <div class="search-container">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search projects..."
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+        <div class="no-results" id="noResults">No projects found matching your search.</div>
+    </div>
+
+    <script>
+        // ADD YOUR PROJECTS HERE - Just copy this format for each new project
+        const projects = [
+            {
+                title: "Ultimate Subnetting Calculator",
+                description: "Subnetting made EASY! Calculate ANY subnetting scenario in seconds.",
+                tags: ["Networking", "Cisco","Calculator"],
+                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
+                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
+            },  
+            {
+                title: "Subnet Trainer Ultimate",
+                description: "Practice your subnetting skills through various challenges and scenarios.",
+                tags: ["Networking", "Cisco","Simulation","Practice","Training"],
+                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
+                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
+            }  
+        
+        ];
+
+        // Render projects
+        function renderProjects(projectsToRender) {
+            const grid = document.getElementById('projectsGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (projectsToRender.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            
+            grid.innerHTML = projectsToRender.map(project => `
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.sourceLink}" class="project-link source-link" target="_blank">Open Source</a>
+                            <a href="${project.demoLink}" class="project-link demo-link" target="_blank">Run</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            const filtered = projects.filter(project => 
+                project.title.toLowerCase().includes(query) ||
+                project.description.toLowerCase().includes(query) ||
+                project.tags.some(tag => tag.toLowerCase().includes(query))
+            );
+            renderProjects(filtered);
+        });
+
+        // Initial render
+        renderProjects(projects);
+    </script>
+</body>
+</html>
