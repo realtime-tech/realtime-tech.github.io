@@ -3,368 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realtime Technologies</title>
+    <meta name="description" content="Realtime Technologies - Building the future, one commit at a time. Explore our innovative projects and tools.">
+    <title>Realtime Technologies - Home</title>
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/realtime-tech?s=64">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2332 100%);
-            color: #e0e6ed;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .tagline {
-            font-size: 1.2em;
-            color: #8b9dc3;
-            margin-bottom: 40px;
-        }
-
-        .search-container {
-            margin: 40px 0;
-            text-align: center;
-            animation: slideUp 0.6s ease-out 0.2s backwards;
-        }
-
-        #searchInput {
-            width: 100%;
-            max-width: 600px;
-            padding: 16px 24px;
-            font-size: 1.1em;
-            background: rgba(15, 28, 51, 0.6);
-            border: 2px solid rgba(102, 126, 234, 0.3);
-            border-radius: 50px;
-            color: #e0e6ed;
-            outline: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        #searchInput::placeholder {
-            color: #6b7b9a;
-        }
-
-        #searchInput:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-            animation: slideUp 0.6s ease-out 0.4s backwards;
-        }
-
-        .project-card {
-            background: rgba(15, 28, 51, 0.5);
-            border: 1px solid rgba(102, 126, 234, 0.2);
-            border-radius: 16px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: #667eea;
-            box-shadow: 0 12px 40px rgba(102, 126, 234, 0.3);
-        }
-
-        .project-card:hover::before {
-            opacity: 1;
-        }
-
-        .project-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card h3 {
-            font-size: 1.6em;
-            margin-bottom: 12px;
-            color: #fff;
-        }
-
-        .project-description {
-            color: #a8b4ce;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .tag {
-            background: rgba(102, 126, 234, 0.2);
-            color: #a5b4fc;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85em;
-            border: 1px solid rgba(102, 126, 234, 0.3);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 12px 28px;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            flex: 1;
-            min-width: 140px;
-            text-align: center;
-        }
-
-        .source-link {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        }
-
-        .source-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(102, 126, 234, 0.5);
-        }
-
-        .demo-link {
-            background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
-            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
-        }
-
-        .demo-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 25px rgba(56, 189, 248, 0.5);
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 60px 20px;
-            color: #8b9dc3;
-            font-size: 1.2em;
-            display: none;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Realtime Technologies</h1>
-            <p class="tagline">Building the future, one commit at a time</p>
-        </header>
-
-        <div class="search-container">
-            <input 
-                type="text" 
-                id="searchInput" 
-                placeholder="Search projects..."
-                autocomplete="off"
-            >
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">RT</div>
+                <span>Realtime Tech</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <span>☀️</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span>☰</span>
+            </button>
         </div>
+    </nav>
 
-        <div class="projects-grid" id="projectsGrid"></div>
-        <div class="no-results" id="noResults">No projects found matching your search.</div>
-    </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Building the Future,<br>One Commit at a Time</h1>
+            <p class="subtitle">
+                Innovative tools and applications designed to solve real-world problems.
+                From networking calculators to productivity tools, we create software that makes a difference.
+            </p>
+            <div class="hero-buttons">
+                <a href="projects.html" class="btn btn-primary">
+                    <span>Explore Projects</span>
+                    <span>→</span>
+                </a>
+                <a href="about.html" class="btn btn-secondary">
+                    <span>Learn More</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        // ADD YOUR PROJECTS HERE - Just copy this format for each new project
-        const projects = [
-            {
-                title: "Ultimate Subnetting Calculator",
-                description: "Subnetting made EASY! Calculate ANY subnetting scenario in seconds.",
-                tags: ["Networking", "Cisco","Calculator"],
-                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
-                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
-            },  
-            {
-                title: "Subnet Trainer Ultimate",
-                description: "Practice your subnetting skills through various challenges and scenarios.",
-                tags: ["Networking", "Cisco","Simulation","Practice","Training"],
-                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
-                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
-            }, 
-            {
-                title: "Quick Specs",
-                description: "Quickly fetch the specs of your device.",
-                tags: ["Specs", "Hardware","Software","System","OS"],
-                sourceLink: "https://github.com/realtime-tech/quick-specs",
-                demoLink: "https://realtime-tech.github.io/quick-specs/"
-            },
-            {
-                title: "Debatable",
-                description: "Your debate brain, digitized and optimized for real-time debating.",
-                tags: ["Debate", "Notebook","Tools","Automation"],
-                sourceLink: "https://github.com/realtime-tech/debatable",
-                demoLink: "https://realtime-tech.github.io/debatable/"
-            },
-            {
-                title: "Floor Is Lava",
-                description: "Floor is Lava game that runs purely offline.",
-                tags: ["Games", "Fun"],
-                sourceLink: "https://github.com/realtime-tech/floor-is-lava",
-                demoLink: "https://realtime-tech.github.io/floor-is-lava/"
-            },
-            {
-                title: "Run A Country",
-                description: "Alright, Commander in Chief! Take office and run this country.",
-                tags: ["Simulation", "Game","Fun"],
-                sourceLink: "https://github.com/realtime-tech/run-a-country",
-                demoLink: "https://realtime-tech.github.io/run-a-country/"
-            },
-            {
-                title: "CCNA Practice Test",
-                description: "Practice for the CCNA - completely free and customizable",
-                tags: ["CCNA", "Cisco","Quiz"],
-                sourceLink: "https://github.com/realtime-tech/ccna-practice-test",
-                demoLink: "https://realtime-tech.github.io/ccna-practice-test/"
-            },
-            {
-                title: "Cisco VLANNER",
-                description: "Calculate VLANS instantly and copy commands directly.",
-                tags: ["Cisco", "Networking","VLAN"],
-                sourceLink: "https://github.com/realtime-tech/cisco-vlanner",
-                demoLink: "https://realtime-tech.github.io/cisco-vlanner/"
-            },
-            {
-                title: "Clean Convert",
-                description: "Quickly and cleanly convert images and videos to other file types. No limits.",
-                tags: ["Converter", "Files","File Conversion"],
-                sourceLink: "https://github.com/realtime-tech/clean-convert",
-                demoLink: "https://realtime-tech.github.io/clean-convert/"
-            }  
-        ];
+    <!-- Features Section -->
+    <section style="background: rgba(10, 22, 40, 0.5); padding: 6rem 2rem;">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why Choose Our Tools?</h2>
+                <p class="section-subtitle">Built with passion, powered by innovation</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Lightning Fast</h3>
+                        <p style="color: var(--text-secondary);">
+                            Optimized for performance, our tools run smoothly on any device without compromising functionality.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔓</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">100% Free & Open Source</h3>
+                        <p style="color: var(--text-secondary);">
+                            All our projects are open source and completely free to use. No hidden costs, no subscriptions.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎯</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Purpose-Built</h3>
+                        <p style="color: var(--text-secondary);">
+                            Each tool is crafted to solve specific problems efficiently, with intuitive interfaces and powerful features.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Fully Responsive</h3>
+                        <p style="color: var(--text-secondary);">
+                            Works seamlessly on desktop, tablet, and mobile. Access your tools anywhere, anytime.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔒</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Privacy First</h3>
+                        <p style="color: var(--text-secondary);">
+                            Your data stays on your device. No tracking, no analytics, no data collection. Period.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🚀</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Always Evolving</h3>
+                        <p style="color: var(--text-secondary);">
+                            Regular updates and new features based on community feedback and emerging needs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        // Render projects
-        function renderProjects(projectsToRender) {
-            const grid = document.getElementById('projectsGrid');
-            const noResults = document.getElementById('noResults');
-            
-            if (projectsToRender.length === 0) {
-                grid.style.display = 'none';
-                noResults.style.display = 'block';
-                return;
-            }
-
-            grid.style.display = 'grid';
-            noResults.style.display = 'none';
-            
-            grid.innerHTML = projectsToRender.map(project => `
-                <div class="project-card">
-                    <div class="project-content">
-                        <h3>${project.title}</h3>
-                        <p class="project-description">${project.description}</p>
-                        <div class="project-tags">
-                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+    <!-- Featured Projects Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Check out some of our most popular tools</p>
+            </div>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-primary);">
+                            Ultimate Subnetting Calculator
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            The most comprehensive subnetting calculator available. Calculate ANY subnetting scenario
+                            in seconds with our intuitive interface designed for network professionals and students alike.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Networking</span>
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Cisco</span>
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Calculator</span>
                         </div>
-                        <div class="project-links">
-                            <a href="${project.sourceLink}" class="project-link source-link" target="_blank">Open Source</a>
-                            <a href="${project.demoLink}" class="project-link demo-link" target="_blank">Run</a>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="https://github.com/realtime-tech/Ultimate-Subnetting-Calculator" class="btn btn-outline" target="_blank">View Source</a>
+                            <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" class="btn btn-primary" target="_blank">Try It Now →</a>
                         </div>
                     </div>
                 </div>
-            `).join('');
-        }
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 1rem; color: var(--text-primary);">
+                            Subnet Trainer Ultimate
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                            Master subnetting through practice! Challenge yourself with various scenarios and
+                            improve your networking skills with instant feedback and detailed explanations.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Networking</span>
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Training</span>
+                            <span style="background: rgba(102, 126, 234, 0.2); color: #a5b4fc; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(102, 126, 234, 0.3);">Education</span>
+                        </div>
+                        <div style="display: flex; gap: 1rem;">
+                            <a href="https://github.com/realtime-tech/Subnet-Trainer-Ultimate" class="btn btn-outline" target="_blank">View Source</a>
+                            <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" class="btn btn-primary" target="_blank">Start Training →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="projects.html" class="btn btn-secondary">View All Projects →</a>
+            </div>
+        </div>
+    </section>
 
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            const filtered = projects.filter(project => 
-                project.title.toLowerCase().includes(query) ||
-                project.description.toLowerCase().includes(query) ||
-                project.tags.some(tag => tag.toLowerCase().includes(query))
-            );
-            renderProjects(filtered);
-        });
+    <!-- CTA Section -->
+    <section style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); padding: 6rem 2rem; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; color: var(--text-primary);">
+                Ready to Get Started?
+            </h2>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Explore our collection of free, open-source tools designed to make your work easier and more efficient.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="projects.html" class="btn btn-primary">Browse Projects</a>
+                <a href="https://github.com/realtime-tech" class="btn btn-secondary" target="_blank">Visit GitHub</a>
+            </div>
+        </div>
+    </section>
 
-        // Initial render
-        renderProjects(projects);
-    </script>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Realtime Technologies</h3>
+                <p>Building innovative tools and applications that solve real-world problems.</p>
+                <div class="social-links">
+                    <a href="https://github.com/realtime-tech" class="social-link" target="_blank" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Popular Projects</h3>
+                <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
+                <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
+                <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
+                <a href="https://realtime-tech.github.io/clean-convert/" target="_blank">Clean Convert</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
+                <a href="projects.html">All Projects</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Realtime Technologies. Open source and free forever.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about Realtime Technologies and our mission to create innovative, free, and open-source tools.">
+    <title>About - Realtime Technologies</title>
+    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/realtime-tech?s=64">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 2rem;
+            width: calc(50% - 2rem);
+            backdrop-filter: blur(10px);
+            transition: var(--transition-normal);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .timeline-title {
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+        }
+
+        .value-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .value-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: calc(100% - 2rem);
+                margin-left: 2rem !important;
+            }
+
+            .timeline-item::before {
+                left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">RT</div>
+                <span>Realtime Tech</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <span>☀️</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span>☰</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="about-hero">
+        <h1 style="font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            About Realtime Technologies
+        </h1>
+        <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+            Passionate developers creating innovative solutions for real-world problems
+        </p>
+    </div>
+
+    <!-- Mission Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Mission</h2>
+            </div>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    At Realtime Technologies, we believe in the power of open-source software to transform
+                    how people work and learn. Our mission is to create high-quality, accessible tools that
+                    solve real problems without barriers.
+                </p>
+                <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-secondary);">
+                    Every project we build is free, open-source, and designed with the user in mind.
+                    We're committed to privacy, performance, and creating software that makes a difference.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section style="background: rgba(10, 22, 40, 0.5);">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">9+</div>
+                    <div class="stat-label">Active Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Open Source</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Free Forever</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Data Collected</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Values</h2>
+                <p class="section-subtitle">The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">🔓</div>
+                        <h3 class="value-title">Open Source First</h3>
+                        <p class="value-description">
+                            Transparency and collaboration are at our core. All our code is open for
+                            anyone to view, use, and contribute to.
+                        </p>
+                    </div>
+                </div>
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">🎯</div>
+                        <h3 class="value-title">User-Focused</h3>
+                        <p class="value-description">
+                            We build tools that solve actual problems. Every feature is designed with
+                            real user needs in mind.
+                        </p>
+                    </div>
+                </div>
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">⚡</div>
+                        <h3 class="value-title">Performance Matters</h3>
+                        <p class="value-description">
+                            Fast, efficient, and reliable. We optimize every line of code to ensure
+                            the best possible experience.
+                        </p>
+                    </div>
+                </div>
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">🔒</div>
+                        <h3 class="value-title">Privacy by Default</h3>
+                        <p class="value-description">
+                            Your data is yours. We don't track, collect, or sell user information. Ever.
+                        </p>
+                    </div>
+                </div>
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">🌍</div>
+                        <h3 class="value-title">Accessible to All</h3>
+                        <p class="value-description">
+                            No paywalls, no subscriptions, no limits. Quality tools should be available
+                            to everyone.
+                        </p>
+                    </div>
+                </div>
+                <div class="card value-card">
+                    <div class="card-content">
+                        <div class="value-icon">🚀</div>
+                        <h3 class="value-title">Continuous Innovation</h3>
+                        <p class="value-description">
+                            We're always learning, improving, and building. Today's project is just
+                            the beginning.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section style="background: rgba(10, 22, 40, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">What We Work With</h2>
+                <p class="section-subtitle">Modern tools and technologies we use</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Frontend</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            HTML5, CSS3, JavaScript (ES6+), Modern CSS frameworks, Responsive design,
+                            Progressive Web Apps
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Development</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            Git & GitHub, VS Code, Chrome DevTools, Performance optimization,
+                            Cross-browser compatibility
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Deployment</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.8;">
+                            GitHub Pages, Static site hosting, CI/CD pipelines, Web performance
+                            optimization, SEO best practices
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section>
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; color: var(--text-primary);">
+                    Want to Contribute?
+                </h2>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.8;">
+                    We welcome contributions from developers of all skill levels. Check out our projects
+                    on GitHub and join us in building tools that make a difference.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://github.com/realtime-tech" class="btn btn-primary" target="_blank">
+                        Visit GitHub
+                    </a>
+                    <a href="projects.html" class="btn btn-secondary">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Realtime Technologies</h3>
+                <p>Building innovative tools and applications that solve real-world problems.</p>
+                <div class="social-links">
+                    <a href="https://github.com/realtime-tech" class="social-link" target="_blank" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Popular Projects</h3>
+                <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
+                <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
+                <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
+                <a href="https://realtime-tech.github.io/clean-convert/" target="_blank">Clean Convert</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
+                <a href="projects.html">All Projects</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Get in Touch</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Realtime Technologies. Open source and free forever.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
