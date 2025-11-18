@@ -232,7 +232,6 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="releases.html">Releases</a></li>
                 <li><a href="demos.html">Demos</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -251,10 +250,10 @@
     <!-- Projects Header -->
     <div class="projects-header">
         <h1 style="font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            Experimental Demos
+            Cosmic Creations
         </h1>
         <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-            Fun games, creative experiments, and proof-of-concept projects
+            Explore our universe of tools, games, and experiments
         </p>
     </div>
 
@@ -269,9 +268,10 @@
         >
         <div class="filter-tags" id="filterTags">
             <button class="filter-tag active" data-filter="all">All</button>
+            <button class="filter-tag" data-filter="Tools">Tools</button>
             <button class="filter-tag" data-filter="Games">Games</button>
-            <button class="filter-tag" data-filter="Simulation">Simulation</button>
-            <button class="filter-tag" data-filter="Experiment">Experiment</button>
+            <button class="filter-tag" data-filter="Education">Education</button>
+            <button class="filter-tag" data-filter="Networking">Networking</button>
             <button class="filter-tag" data-filter="Fun">Fun</button>
         </div>
     </div>
@@ -303,13 +303,12 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
-                <a href="releases.html">Releases</a>
                 <a href="demos.html">Demos</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
-                <h3>Popular Releases</h3>
+                <h3>Popular Projects</h3>
                 <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
                 <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
                 <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
@@ -318,8 +317,7 @@
             <div class="footer-section">
                 <h3>Resources</h3>
                 <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
-                <a href="releases.html">Production Releases</a>
-                <a href="demos.html">Experimental Demos</a>
+                <a href="demos.html">All Demos</a>
                 <a href="about.html">About Us</a>
             </div>
         </div>
@@ -330,21 +328,77 @@
 
     <script src="script.js"></script>
     <script>
-        // Demo Projects - Fun experiments, games, and creative projects
+        // All Cosmic Creations - Tools, Games, and Experiments
         const projects = [
             {
+                title: "CSharpify",
+                description: "Master C# development through interactive lessons and real-world coding examples. Your journey to C# mastery starts here!",
+                tags: ["Education", "Programming", "Fun"],
+                sourceLink: "https://github.com/realtime-tech/csharpify",
+                demoLink: "https://realtime-tech.github.io/csharpify"
+            },
+            {
+                title: "Ultimate Subnetting Calculator",
+                description: "The most powerful subnetting calculator in the cosmos! Calculate ANY scenario in seconds with our beautiful interface.",
+                tags: ["Tools", "Networking"],
+                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
+                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
+            },
+            {
+                title: "Subnet Trainer Ultimate",
+                description: "Level up your networking skills! Practice subnetting through engaging challenges with instant feedback.",
+                tags: ["Education", "Networking", "Games"],
+                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
+                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
+            },
+            {
+                title: "Quick Specs",
+                description: "Instantly reveal your device's full specifications. Hardware, software, system - everything at a glance!",
+                tags: ["Tools"],
+                sourceLink: "https://github.com/realtime-tech/quick-specs",
+                demoLink: "https://realtime-tech.github.io/quick-specs/"
+            },
+            {
+                title: "Debatable",
+                description: "Your digital debate vault! Organize research, structure arguments, and access your debate brain in real-time.",
+                tags: ["Tools", "Education"],
+                sourceLink: "https://github.com/realtime-tech/debatable",
+                demoLink: "https://realtime-tech.github.io/debatable/"
+            },
+            {
                 title: "Floor Is Lava",
-                description: "Classic childhood game brought to life in your browser! Jump from platform to platform and avoid the lava. Features dynamic difficulty scaling and addictive gameplay that runs purely offline.",
-                tags: ["Games", "Fun", "Experiment"],
+                description: "Childhood nostalgia meets browser gaming! Jump, dodge, survive. Don't touch the lava!",
+                tags: ["Games", "Fun"],
                 sourceLink: "https://github.com/realtime-tech/floor-is-lava",
                 demoLink: "https://realtime-tech.github.io/floor-is-lava/"
             },
             {
                 title: "Run A Country",
-                description: "Ever wanted to be Commander in Chief? Take office and make critical decisions that shape your nation. Balance economy, military, diplomacy, and public opinion in this engaging political simulation.",
-                tags: ["Simulation", "Games", "Fun"],
+                description: "Take the throne as Commander in Chief! Balance economy, military, diplomacy, and public approval in this addictive political sim.",
+                tags: ["Games", "Fun"],
                 sourceLink: "https://github.com/realtime-tech/run-a-country",
                 demoLink: "https://realtime-tech.github.io/run-a-country/"
+            },
+            {
+                title: "CCNA Practice Test",
+                description: "Ace your CCNA certification! Hundreds of questions, detailed explanations, fully customizable practice.",
+                tags: ["Education", "Networking"],
+                sourceLink: "https://github.com/realtime-tech/ccna-practice-test",
+                demoLink: "https://realtime-tech.github.io/ccna-practice-test/"
+            },
+            {
+                title: "Cisco VLANNER",
+                description: "VLAN configuration made effortless! Calculate schemes and copy production-ready commands instantly.",
+                tags: ["Tools", "Networking"],
+                sourceLink: "https://github.com/realtime-tech/cisco-vlanner",
+                demoLink: "https://realtime-tech.github.io/cisco-vlanner/"
+            },
+            {
+                title: "Clean Convert",
+                description: "Transform media like magic! Convert images and videos to any format with zero limits and complete privacy.",
+                tags: ["Tools"],
+                sourceLink: "https://github.com/realtime-tech/clean-convert",
+                demoLink: "https://realtime-tech.github.io/clean-convert/"
             }
         ];
 
