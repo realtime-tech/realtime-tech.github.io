@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore all projects by Realtime Technologies - Free, open-source tools for networking, productivity, and more.">
-    <title>Projects - Realtime Technologies</title>
+    <meta name="description" content="Experimental demos and fun projects by Realtime Technologies - Games, simulations, and creative experiments.">
+    <title>Demos - Realtime Technologies</title>
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/realtime-tech?s=64">
     <link rel="stylesheet" href="styles.css">
     <style>
@@ -232,7 +232,8 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="demos.html">Demos</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li>
@@ -250,10 +251,10 @@
     <!-- Projects Header -->
     <div class="projects-header">
         <h1 style="font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            Our Projects
+            Experimental Demos
         </h1>
         <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-            Explore our collection of free, open-source tools designed to make your work easier
+            Fun games, creative experiments, and proof-of-concept projects
         </p>
     </div>
 
@@ -268,11 +269,10 @@
         >
         <div class="filter-tags" id="filterTags">
             <button class="filter-tag active" data-filter="all">All</button>
-            <button class="filter-tag" data-filter="Networking">Networking</button>
-            <button class="filter-tag" data-filter="Cisco">Cisco</button>
             <button class="filter-tag" data-filter="Games">Games</button>
-            <button class="filter-tag" data-filter="Tools">Tools</button>
-            <button class="filter-tag" data-filter="Quiz">Quiz</button>
+            <button class="filter-tag" data-filter="Simulation">Simulation</button>
+            <button class="filter-tag" data-filter="Experiment">Experiment</button>
+            <button class="filter-tag" data-filter="Fun">Fun</button>
         </div>
     </div>
 
@@ -303,12 +303,13 @@
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <a href="index.html">Home</a>
-                <a href="projects.html">Projects</a>
+                <a href="releases.html">Releases</a>
+                <a href="demos.html">Demos</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
-                <h3>Popular Projects</h3>
+                <h3>Popular Releases</h3>
                 <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
                 <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
                 <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
@@ -317,9 +318,9 @@
             <div class="footer-section">
                 <h3>Resources</h3>
                 <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
-                <a href="projects.html">All Projects</a>
+                <a href="releases.html">Production Releases</a>
+                <a href="demos.html">Experimental Demos</a>
                 <a href="about.html">About Us</a>
-                <a href="contact.html">Get in Touch</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -329,77 +330,21 @@
 
     <script src="script.js"></script>
     <script>
-        // Projects data
+        // Demo Projects - Fun experiments, games, and creative projects
         const projects = [
             {
-                title: "CSharpify",
-                description: "Learning C# the right way",
-                tags: ["C#", "Coding", "Programming","Course","Software Development"],
-                sourceLink: "https://github.com/realtime-tech/csharpify",
-                demoLink: "https://realtime-tech.github.io/csharpify"
-            },
-            {
-                title: "Ultimate Subnetting Calculator",
-                description: "Subnetting made EASY! Calculate ANY subnetting scenario in seconds.",
-                tags: ["Networking", "Cisco", "Calculator"],
-                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
-                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
-            },
-            {
-                title: "Subnet Trainer Ultimate",
-                description: "Practice your subnetting skills through various challenges and scenarios.",
-                tags: ["Networking", "Cisco", "Simulation", "Practice", "Training"],
-                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
-                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
-            },
-            {
-                title: "Quick Specs",
-                description: "Quickly fetch the specs of your device.",
-                tags: ["Specs", "Hardware", "Software", "System", "OS"],
-                sourceLink: "https://github.com/realtime-tech/quick-specs",
-                demoLink: "https://realtime-tech.github.io/quick-specs/"
-            },
-            {
-                title: "Debatable",
-                description: "Your debate brain, digitized and optimized for real-time debating.",
-                tags: ["Debate", "Notebook", "Tools", "Automation"],
-                sourceLink: "https://github.com/realtime-tech/debatable",
-                demoLink: "https://realtime-tech.github.io/debatable/"
-            },
-            {
                 title: "Floor Is Lava",
-                description: "Floor is Lava game that runs purely offline.",
-                tags: ["Games", "Fun"],
+                description: "Classic childhood game brought to life in your browser! Jump from platform to platform and avoid the lava. Features dynamic difficulty scaling and addictive gameplay that runs purely offline.",
+                tags: ["Games", "Fun", "Experiment"],
                 sourceLink: "https://github.com/realtime-tech/floor-is-lava",
                 demoLink: "https://realtime-tech.github.io/floor-is-lava/"
             },
             {
                 title: "Run A Country",
-                description: "Alright, Commander in Chief! Take office and run this country.",
-                tags: ["Simulation", "Game", "Fun"],
+                description: "Ever wanted to be Commander in Chief? Take office and make critical decisions that shape your nation. Balance economy, military, diplomacy, and public opinion in this engaging political simulation.",
+                tags: ["Simulation", "Games", "Fun"],
                 sourceLink: "https://github.com/realtime-tech/run-a-country",
                 demoLink: "https://realtime-tech.github.io/run-a-country/"
-            },
-            {
-                title: "CCNA Practice Test",
-                description: "Practice for the CCNA - completely free and customizable",
-                tags: ["CCNA", "Cisco", "Quiz"],
-                sourceLink: "https://github.com/realtime-tech/ccna-practice-test",
-                demoLink: "https://realtime-tech.github.io/ccna-practice-test/"
-            },
-            {
-                title: "Cisco VLANNER",
-                description: "Calculate VLANS instantly and copy commands directly.",
-                tags: ["Cisco", "Networking", "VLAN"],
-                sourceLink: "https://github.com/realtime-tech/cisco-vlanner",
-                demoLink: "https://realtime-tech.github.io/cisco-vlanner/"
-            },
-            {
-                title: "Clean Convert",
-                description: "Quickly and cleanly convert images and videos to other file types. No limits.",
-                tags: ["Converter", "Files", "File Conversion"],
-                sourceLink: "https://github.com/realtime-tech/clean-convert",
-                demoLink: "https://realtime-tech.github.io/clean-convert/"
             }
         ];
 
