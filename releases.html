@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional-grade production releases by Realtime Technologies - Battle-tested tools ready for real-world use.">
+    <title>Releases - Realtime Technologies</title>
+    <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/realtime-tech?s=64">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .projects-header {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        }
+
+        .search-filter-container {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-primary);
+            outline: none;
+            transition: var(--transition-normal);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-box::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-box:focus {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .filter-tag {
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 25px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition-normal);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: var(--primary-gradient);
+            border-color: transparent;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-gradient);
+            opacity: 0;
+            transition: var(--transition-normal);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .project-content {
+            position: relative;
+            z-index: 1;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.2);
+            color: #a5b4fc;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-normal);
+            text-align: center;
+        }
+
+        .source-link {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .source-link:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .demo-link {
+            background: var(--secondary-gradient);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .demo-link:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            display: none;
+        }
+
+        .project-count {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1rem 3rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-icon">RT</div>
+                <span>Realtime Tech</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="releases.html">Releases</a></li>
+                <li><a href="demos.html">Demos</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <span>☀️</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span>☰</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <div class="projects-header">
+        <h1 style="font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Production Releases
+        </h1>
+        <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+            Professional-grade tools and applications ready for real-world deployment
+        </p>
+    </div>
+
+    <!-- Search and Filter -->
+    <div class="search-filter-container">
+        <input
+            type="text"
+            id="searchInput"
+            class="search-box"
+            placeholder="Search projects by name, description, or tags..."
+            autocomplete="off"
+        >
+        <div class="filter-tags" id="filterTags">
+            <button class="filter-tag active" data-filter="all">All</button>
+            <button class="filter-tag" data-filter="Networking">Networking</button>
+            <button class="filter-tag" data-filter="Cisco">Cisco</button>
+            <button class="filter-tag" data-filter="Tools">Tools</button>
+            <button class="filter-tag" data-filter="Education">Education</button>
+            <button class="filter-tag" data-filter="Productivity">Productivity</button>
+        </div>
+    </div>
+
+    <!-- Project Count -->
+    <div class="project-count" id="projectCount"></div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="no-results" id="noResults">
+        <p>No projects found matching your search.</p>
+        <p style="margin-top: 1rem; font-size: 1rem;">Try adjusting your filters or search terms.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Realtime Technologies</h3>
+                <p>Building innovative tools and applications that solve real-world problems.</p>
+                <div class="social-links">
+                    <a href="https://github.com/realtime-tech" class="social-link" target="_blank" aria-label="GitHub">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="releases.html">Releases</a>
+                <a href="demos.html">Demos</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Popular Releases</h3>
+                <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
+                <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
+                <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
+                <a href="https://realtime-tech.github.io/clean-convert/" target="_blank">Clean Convert</a>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
+                <a href="releases.html">Production Releases</a>
+                <a href="demos.html">Experimental Demos</a>
+                <a href="about.html">About Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Realtime Technologies. Open source and free forever.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Production Release Projects - Battle-tested, professional-grade tools
+        const projects = [
+            {
+                title: "CSharpify",
+                description: "Comprehensive C# learning platform with interactive lessons, real-world examples, and hands-on coding exercises for mastering modern C# development.",
+                tags: ["C#", "Education", "Programming", "Software Development"],
+                sourceLink: "https://github.com/realtime-tech/csharpify",
+                demoLink: "https://realtime-tech.github.io/csharpify"
+            },
+            {
+                title: "Ultimate Subnetting Calculator",
+                description: "Professional subnetting calculator trusted by network engineers. Calculate ANY subnetting scenario with precision, featuring advanced VLSM support and detailed breakdowns.",
+                tags: ["Networking", "Cisco", "Tools"],
+                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
+                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
+            },
+            {
+                title: "Subnet Trainer Ultimate",
+                description: "Industry-leading training platform for networking professionals. Master subnetting through progressive challenges with instant feedback and performance tracking.",
+                tags: ["Networking", "Cisco", "Education", "Training"],
+                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
+                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
+            },
+            {
+                title: "Quick Specs",
+                description: "Instantly retrieve comprehensive device specifications including hardware, software, and system information. Essential tool for IT professionals and support teams.",
+                tags: ["Tools", "System", "Productivity"],
+                sourceLink: "https://github.com/realtime-tech/quick-specs",
+                demoLink: "https://realtime-tech.github.io/quick-specs/"
+            },
+            {
+                title: "Debatable",
+                description: "Professional debate organization tool for competitive debaters. Digitize your research, organize arguments, and access your debate brain in real-time.",
+                tags: ["Productivity", "Tools", "Education"],
+                sourceLink: "https://github.com/realtime-tech/debatable",
+                demoLink: "https://realtime-tech.github.io/debatable/"
+            },
+            {
+                title: "CCNA Practice Test",
+                description: "Comprehensive CCNA certification practice platform with hundreds of questions, detailed explanations, and customizable test scenarios. Pass with confidence.",
+                tags: ["Cisco", "Education", "Networking"],
+                sourceLink: "https://github.com/realtime-tech/ccna-practice-test",
+                demoLink: "https://realtime-tech.github.io/ccna-practice-test/"
+            },
+            {
+                title: "Cisco VLANNER",
+                description: "Professional VLAN configuration calculator for Cisco networks. Generate accurate VLAN schemes and copy production-ready commands directly to your clipboard.",
+                tags: ["Cisco", "Networking", "Tools"],
+                sourceLink: "https://github.com/realtime-tech/cisco-vlanner",
+                demoLink: "https://realtime-tech.github.io/cisco-vlanner/"
+            },
+            {
+                title: "Clean Convert",
+                description: "Enterprise-grade media conversion tool. Convert images and videos to any format with zero limits, complete privacy, and blazing-fast processing.",
+                tags: ["Tools", "Productivity"],
+                sourceLink: "https://github.com/realtime-tech/clean-convert",
+                demoLink: "https://realtime-tech.github.io/clean-convert/"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        // Render projects
+        function renderProjects(projectsToRender) {
+            const grid = document.getElementById('projectsGrid');
+            const noResults = document.getElementById('noResults');
+            const projectCount = document.getElementById('projectCount');
+
+            if (projectsToRender.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                projectCount.style.display = 'none';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+            projectCount.style.display = 'block';
+            projectCount.textContent = `Showing ${projectsToRender.length} project${projectsToRender.length !== 1 ? 's' : ''}`;
+
+            grid.innerHTML = projectsToRender.map(project => `
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>${project.title}</h3>
+                        <p class="project-description">${project.description}</p>
+                        <div class="project-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                        <div class="project-links">
+                            <a href="${project.sourceLink}" class="project-link source-link" target="_blank">
+                                <span>Source</span>
+                                <span>↗</span>
+                            </a>
+                            <a href="${project.demoLink}" class="project-link demo-link" target="_blank">
+                                <span>Launch</span>
+                                <span>→</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter projects
+        function filterProjects() {
+            let filtered = projects;
+
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(project =>
+                    project.tags.some(tag => tag === currentFilter)
+                );
+            }
+
+            // Apply search filter
+            if (currentSearch) {
+                filtered = filtered.filter(project =>
+                    project.title.toLowerCase().includes(currentSearch) ||
+                    project.description.toLowerCase().includes(currentSearch) ||
+                    project.tags.some(tag => tag.toLowerCase().includes(currentSearch))
+                );
+            }
+
+            renderProjects(filtered);
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase();
+            filterProjects();
+        });
+
+        // Filter tag functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                filterTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                currentFilter = tag.dataset.filter;
+                filterProjects();
+            });
+        });
+
+        // Initial render
+        renderProjects(projects);
+    </script>
+</body>
+</html>
