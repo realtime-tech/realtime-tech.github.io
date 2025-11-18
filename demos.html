@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -23,43 +22,38 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">0</button>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">â˜°</button>
         </div>
     </nav>
 
-    <!-- Page Header -->
-    <div class="page-content">
-        <div class="page-header">
-            <h1>Demos & Experiments</h1>
-            <p>Explore our experimental projects and prototypes</p>
-        </div>
+    <div class="page-header">
+        <span class="section-label">Experimental Zone</span>
+        <h1 class="gradient-text">Demos</h1>
+        <p>Explore our experimental projects and prototypes</p>
+    </div>
 
-        <!-- Search and Filter -->
+    <section>
         <div class="search-filter-container">
-            <input type="text" id="searchInput" class="search-box" placeholder="Search demos..." autocomplete="off">
+            <input type="text" id="searchInput" class="search-box" placeholder="Search the constellation..." autocomplete="off">
             <div class="filter-tags" id="filterTags">
-                <button class="filter-tag active" data-filter="all">All</button>
-                <button class="filter-tag" data-filter="Networking">Networking</button>
-                <button class="filter-tag" data-filter="Games">Games</button>
-                <button class="filter-tag" data-filter="Tools">Tools</button>
-                <button class="filter-tag" data-filter="Education">Education</button>
+                <button class="filter-star active" data-filter="all">All</button>
+                <button class="filter-star" data-filter="Networking">Networking</button>
+                <button class="filter-star" data-filter="Games">Games</button>
+                <button class="filter-star" data-filter="Tools">Tools</button>
+                <button class="filter-star" data-filter="Education">Education</button>
             </div>
         </div>
 
         <div class="project-count" id="projectCount"></div>
 
-        <!-- Projects Grid -->
-        <div class="container">
-            <div class="projects-grid" id="projectsGrid"></div>
-        </div>
-    </div>
+        <div class="projects-constellation" id="projectsGrid"></div>
+    </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Realtime Technologies</h3>
-                <p>Building innovative tools and applications that solve real-world problems.</p>
+                <p>Building innovative open-source tools and experiences for the digital frontier.</p>
                 <div class="social-links">
                     <a href="https://github.com/realtime-tech" class="social-link" target="_blank" aria-label="GitHub">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -69,7 +63,7 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Navigate</h3>
                 <a href="index.html">Home</a>
                 <a href="releases.html">Releases</a>
                 <a href="demos.html">Demos</a>
@@ -77,16 +71,16 @@
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
-                <h3>Projects</h3>
+                <h3>Featured</h3>
                 <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
                 <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
                 <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice</a>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
-                <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
-                <a href="releases.html">View Releases</a>
-                <a href="demos.html">Browse Demos</a>
+                <a href="https://github.com/realtime-tech" target="_blank">GitHub</a>
+                <a href="releases.html">Releases</a>
+                <a href="demos.html">Demos</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -96,7 +90,6 @@
 
     <script src="script.js"></script>
     <script>
-        // All demo projects
         const projects = [
             {
                 title: "CSharpify",
@@ -172,12 +165,10 @@
 
             let filtered = projects;
 
-            // Apply filter
             if (currentFilter !== 'all') {
                 filtered = filtered.filter(p => p.tags.includes(currentFilter));
             }
 
-            // Apply search
             if (currentSearch) {
                 filtered = filtered.filter(p =>
                     p.title.toLowerCase().includes(currentSearch) ||
@@ -189,7 +180,7 @@
             projectCount.textContent = `Showing ${filtered.length} demo${filtered.length !== 1 ? 's' : ''}`;
 
             grid.innerHTML = filtered.map(project => `
-                <div class="project-card">
+                <div class="project-star">
                     <h3>${project.title}</h3>
                     <p class="project-description">${project.description}</p>
                     <div class="project-tags">
@@ -198,34 +189,31 @@
                     <div class="project-links">
                         <a href="${project.sourceLink}" class="project-link source-link" target="_blank">
                             <span>Source</span>
-                            <span>—</span>
+                            <span>â†—</span>
                         </a>
                         <a href="${project.demoLink}" class="project-link demo-link" target="_blank">
                             <span>Launch</span>
-                            <span>’</span>
+                            <span>â†’</span>
                         </a>
                     </div>
                 </div>
             `).join('');
         }
 
-        // Search
         document.getElementById('searchInput').addEventListener('input', (e) => {
             currentSearch = e.target.value.toLowerCase();
             renderProjects();
         });
 
-        // Filter tags
-        document.querySelectorAll('.filter-tag').forEach(tag => {
+        document.querySelectorAll('.filter-star').forEach(tag => {
             tag.addEventListener('click', () => {
-                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.filter-star').forEach(t => t.classList.remove('active'));
                 tag.classList.add('active');
                 currentFilter = tag.dataset.filter;
                 renderProjects();
             });
         });
 
-        // Initial render
         renderProjects();
     </script>
 </body>
