@@ -3,236 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get in touch with Realtime Technologies. Contribute to our projects or reach out with questions.">
+    <meta name="description" content="Get in touch with Realtime Technologies. Contribute to our projects or reach out with questions">
     <title>Contact - Realtime Technologies</title>
     <link rel="icon" type="image/png" href="https://avatars.githubusercontent.com/realtime-tech?s=64">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .contact-hero {
-            padding: 8rem 2rem 4rem;
-            text-align: center;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
-        }
-
-        .contact-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            transition: var(--transition-normal);
-        }
-
-        .contact-card:hover {
-            border-color: var(--border-hover);
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .contact-card-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition-fast);
-        }
-
-        .contact-card a:hover {
-            color: #764ba2;
-        }
-
-        .contact-form {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 2.5rem;
-            backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-label {
-            display: block;
-            color: var(--text-primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .form-input,
-        .form-textarea {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: rgba(10, 22, 40, 0.4);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: var(--transition-normal);
-            outline: none;
-        }
-
-        .form-input::placeholder,
-        .form-textarea::placeholder {
-            color: var(--text-muted);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            border-color: var(--border-hover);
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-        }
-
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        .form-submit {
-            width: 100%;
-            padding: 1.2rem;
-            background: var(--primary-gradient);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-normal);
-            box-shadow: var(--shadow-md);
-        }
-
-        .form-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .form-submit:active {
-            transform: translateY(0);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition-normal);
-            font-size: 1.5rem;
-        }
-
-        .social-icon:hover {
-            background: var(--primary-gradient);
-            border-color: transparent;
-            color: white;
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .faq-section {
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .faq-item {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 15px;
-            padding: 1.5rem 2rem;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(10px);
-            transition: var(--transition-normal);
-            cursor: pointer;
-        }
-
-        .faq-item:hover {
-            border-color: var(--border-hover);
-        }
-
-        .faq-question {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .faq-answer {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-top: 1rem;
-            display: none;
-        }
-
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-
-        .faq-icon {
-            transition: var(--transition-normal);
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        @media (max-width: 968px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-                padding: 3rem 1rem;
-            }
-        }
-    </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -241,207 +17,163 @@
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="demos.html">Releases</a></li>
                 <li><a href="releases.html">Releases</a></li>
                 <li><a href="demos.html">Demos</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li>
-                </li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span>☰</span>
-            </button>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">☰</button>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <div class="contact-hero">
-        <h1 style="font-size: clamp(3rem, 7vw, 4.5rem); font-weight: 800; margin-bottom: 1rem; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
-            Get In Touch
-        </h1>
-        <p style="font-size: 1.3rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-            Have questions, suggestions, or want to contribute? We'd love to hear from you!
-        </p>
+    <div class="page-header">
+        <span class="section-label">Connect With Us</span>
+        <h1 class="gradient-text">Get In Touch</h1>
+        <p>Have questions, suggestions, or want to contribute? We'd love to hear from you</p>
     </div>
 
-    <!-- Contact Section -->
-    <div class="contact-container">
-        <!-- Contact Info -->
-        <div class="contact-info">
+    <section>
+        <div class="contact-constellation">
             <div class="contact-card">
-                <div class="contact-card-icon">💬</div>
+                <div class="contact-icon">💬</div>
                 <h3>GitHub Discussions</h3>
                 <p>Join the conversation, ask questions, or share ideas with the community.</p>
-                <a href="https://github.com/realtime-tech" target="_blank">Visit GitHub →</a>
+                <a href="https://github.com/realtime-tech" class="contact-link" target="_blank">
+                    <span>Visit GitHub</span>
+                    <span>↗</span>
+                </a>
             </div>
 
             <div class="contact-card">
-                <div class="contact-card-icon">🐛</div>
+                <div class="contact-icon">🐛</div>
                 <h3>Report Issues</h3>
                 <p>Found a bug? Report it on the specific project's GitHub issues page.</p>
-                <a href="https://github.com/realtime-tech" target="_blank">Report Issue →</a>
+                <a href="https://github.com/realtime-tech" class="contact-link" target="_blank">
+                    <span>Report Issue</span>
+                    <span>↗</span>
+                </a>
             </div>
 
             <div class="contact-card">
-                <div class="contact-card-icon">🤝</div>
+                <div class="contact-icon">🤝</div>
                 <h3>Contribute</h3>
-                <p>Want to contribute to our projects? Check out our repositories and submit a pull request!</p>
-                <a href="https://github.com/realtime-tech" target="_blank">Start Contributing →</a>
+                <p>Want to contribute to our projects? Check out our repositories and submit a pull request.</p>
+                <a href="https://github.com/realtime-tech" class="contact-link" target="_blank">
+                    <span>Start Contributing</span>
+                    <span>↗</span>
+                </a>
             </div>
 
             <div class="contact-card">
-                <div class="contact-card-icon">🌐</div>
+                <div class="contact-icon">🌐</div>
                 <h3>Follow Us</h3>
-                <p>Stay updated with our latest projects and releases.</p>
-                <div class="social-icons">
-                    <a href="https://github.com/realtime-tech" class="social-icon" target="_blank" aria-label="GitHub">
-                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form">
-            <h2 style="color: var(--text-primary); font-size: 2rem; margin-bottom: 1.5rem;">Send a Message</h2>
-            <form id="contactForm">
-                <div class="form-group">
-                    <label class="form-label" for="name">Name</label>
-                    <input
-                        type="text"
-                        id="name"
-                        class="form-input"
-                        placeholder="Your name"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        class="form-input"
-                        placeholder="your.email@example.com"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="subject">Subject</label>
-                    <input
-                        type="text"
-                        id="subject"
-                        class="form-input"
-                        placeholder="What's this about?"
-                        required
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea
-                        id="message"
-                        class="form-textarea"
-                        placeholder="Tell us more..."
-                        required
-                    ></textarea>
-                </div>
-
-                <button type="submit" class="form-submit">Send Message</button>
-            </form>
-            <p style="margin-top: 1rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
-                Note: This form creates a GitHub issue. You'll need a GitHub account.
-            </p>
-        </div>
-    </div>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="section-header">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How can I contribute to your projects?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                All our projects are open source on GitHub! Fork the repository you're interested in,
-                make your changes, and submit a pull request. We welcome contributions of all types -
-                code, documentation, bug reports, or feature suggestions.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Are your tools really free?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                Yes! All our tools are 100% free and open source. No hidden costs, no premium tiers,
-                no subscriptions. We believe quality tools should be accessible to everyone.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Do you collect any user data?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                No. We don't use analytics, tracking, or any form of data collection. Your privacy
-                is important to us, and all our tools work entirely in your browser without
-                sending any data to external servers.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Can I use your projects commercially?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                Yes! Our projects are open source and free to use for any purpose, including
-                commercial use. Check each project's license file for specific terms.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>How do I report a bug?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                Visit the GitHub repository of the specific project and create an issue. Please
-                include as much detail as possible: what you were doing, what you expected to
-                happen, and what actually happened. Screenshots are always helpful!
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question">
-                <span>Can I request new features?</span>
-                <span class="faq-icon">▼</span>
-            </div>
-            <div class="faq-answer">
-                Absolutely! We love hearing ideas from users. Open an issue on GitHub with your
-                feature request, explain the use case, and we'll discuss it with the community.
-                Better yet, you can implement it yourself and submit a pull request!
+                <p>Stay updated with our latest projects and releases on GitHub.</p>
+                <a href="https://github.com/realtime-tech" class="contact-link" target="_blank">
+                    <span>Follow on GitHub</span>
+                    <span>↗</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <section style="background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 39, 0.4) 50%, transparent 100%);">
+        <div class="section-header">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+
+        <div class="faq-constellation">
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I contribute to your projects?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    All our projects are open source on GitHub! Fork the repository you're interested in,
+                    make your changes, and submit a pull request. We welcome contributions of all types -
+                    code, documentation, bug reports, or feature suggestions.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are your tools really free?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! All our tools are 100% free and open source. No hidden costs, no premium tiers,
+                    no subscriptions. We believe quality tools should be accessible to everyone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do you collect any user data?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    No. We don't use analytics, tracking, or any form of data collection. Your privacy
+                    is important to us, and all our tools work entirely in your browser without
+                    sending any data to external servers.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I use your projects commercially?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Our projects are open source and free to use for any purpose, including
+                    commercial use. Check each project's license file for specific terms.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I report a bug?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Visit the GitHub repository of the specific project and create an issue. Please
+                    include as much detail as possible: what you were doing, what you expected to
+                    happen, and what actually happened. Screenshots are always helpful!
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I request new features?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We love hearing ideas from users. Open an issue on GitHub with your
+                    feature request, explain the use case, and we'll discuss it with the community.
+                    Better yet, you can implement it yourself and submit a pull request!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="text-align: center; padding: 8rem 3rem;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                Ready to Get Started?
+            </h2>
+            <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem;">
+                Check out our projects and start using our tools today.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="releases.html" class="btn btn-primary">Browse Releases</a>
+                <a href="demos.html" class="btn btn-secondary">Try Demos</a>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Realtime Technologies</h3>
-                <p>Building innovative tools and applications that solve real-world problems.</p>
+                <p>Building innovative open-source tools and experiences for the digital frontier.</p>
                 <div class="social-links">
                     <a href="https://github.com/realtime-tech" class="social-link" target="_blank" aria-label="GitHub">
                         <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
@@ -451,28 +183,24 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Navigate</h3>
                 <a href="index.html">Home</a>
-                <a href="demos.html">Releases</a>
+                <a href="releases.html">Releases</a>
                 <a href="demos.html">Demos</a>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
             <div class="footer-section">
-                <h3>Popular Projects</h3>
+                <h3>Featured</h3>
                 <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" target="_blank">Subnetting Calculator</a>
                 <a href="https://realtime-tech.github.io/Subnet-Trainer-Ultimate" target="_blank">Subnet Trainer</a>
-                <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice Test</a>
-                <a href="https://realtime-tech.github.io/clean-convert/" target="_blank">Clean Convert</a>
+                <a href="https://realtime-tech.github.io/ccna-practice-test/" target="_blank">CCNA Practice</a>
             </div>
             <div class="footer-section">
                 <h3>Resources</h3>
-                <a href="https://github.com/realtime-tech" target="_blank">GitHub Organization</a>
-                <a href="demos.html">View Releases</a>
-                <a href="demos.html">Browse Demos</a>
-                <a href="demos.html"></a>
-                <a href="about.html">About Us</a>
-                <a href="contact.html">Get in Touch</a>
+                <a href="https://github.com/realtime-tech" target="_blank">GitHub</a>
+                <a href="releases.html">Releases</a>
+                <a href="demos.html">Demos</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -487,32 +215,6 @@
             item.addEventListener('click', () => {
                 item.classList.toggle('active');
             });
-        });
-
-        // Contact Form
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-
-            // Create GitHub issue URL (users will need to manually create the issue)
-            const issueTitle = encodeURIComponent(`Contact Form: ${subject}`);
-            const issueBody = encodeURIComponent(
-                `**From:** ${name} (${email})\n\n**Message:**\n${message}`
-            );
-            const githubUrl = `https://github.com/realtime-tech/realtime-tech.github.io/issues/new?title=${issueTitle}&body=${issueBody}`;
-
-            // Open GitHub in new tab
-            window.open(githubUrl, '_blank');
-
-            // Show success message
-            alert('Thank you! A new tab will open with your pre-filled GitHub issue. Please submit it there.');
-
-            // Reset form
-            e.target.reset();
         });
     </script>
 </body>
