@@ -90,109 +90,21 @@
 
     <script src="script.js"></script>
     <script>
-        const projects = [
-            {
-                title: "Bouncy Hop",
-                description: "Doodle Jump? Nah. Bouncy Rush? Nah. Bouncy Hop? Yeahhh!",
-                tags: ["Games", "AI"],
-                sourceLink: "https://github.com/realtime-tech/bouncy-hop",
-                demoLink: "https://realtime-tech.github.io/bouncy-hop"
-            },
-            {
-                title: "Connect Four",
-                description: "Play connect four against an AI - can you win?",
-                tags: ["Games", "AI"],
-                sourceLink: "https://github.com/realtime-tech/connect-four",
-                demoLink: "https://realtime-tech.github.io/connect-four"
-            },
-            {
-                title: "CSharpify",
-                description: "Comprehensive C# learning platform with interactive lessons and real-world coding examples. Master modern C# development from basics to advanced concepts.",
-                tags: ["Education", "Programming"],
-                sourceLink: "https://github.com/realtime-tech/csharpify",
-                demoLink: "https://realtime-tech.github.io/csharpify"
-            },
-            {
-                title: "Wordle Fun",
-                description: "A fun and local wordle game",
-                tags: ["Games", "Educational"],
-                sourceLink: "https://github.com/realtime-tech/wordlefun",
-                demoLink: "https://realtime-tech.github.io/wordlefun"
-            },
-            {
-                title: "POS Express",
-                description: "A point-of-sale app simulation with many features",
-                tags: ["Simulation", "Sales"],
-                sourceLink: "https://github.com/realtime-tech/pos",
-                demoLink: "https://realtime-tech.github.io/pos"
-            },
-            {
-                title: "Subnet Trainer Ultimate",
-                description: "Practice and master subnetting through interactive challenges. Features progressive difficulty, instant feedback, and detailed explanations.",
-                tags: ["Networking", "Education"],
-                sourceLink: "https://github.com/realtime-tech/Subnet-Trainer-Ultimate",
-                demoLink: "https://realtime-tech.github.io/Subnet-Trainer-Ultimate"
-            },
-            {
-                title: "Quick Specs",
-                description: "Instantly retrieve comprehensive device specifications including hardware, software, and system information.",
-                tags: ["Tools"],
-                sourceLink: "https://github.com/realtime-tech/quick-specs",
-                demoLink: "https://realtime-tech.github.io/quick-specs/"
-            },
-            {
-                title: "Debatable",
-                description: "Professional debate organization tool. Digitize your research, organize arguments, and access your debate brain in real-time.",
-                tags: ["Tools", "Education"],
-                sourceLink: "https://github.com/realtime-tech/debatable",
-                demoLink: "https://realtime-tech.github.io/debatable/"
-            },
-            {
-                title: "Floor Is Lava",
-                description: "Classic childhood game in your browser! Jump from platform to platform, avoid the lava, and survive as long as you can.",
-                tags: ["Games", "Fun"],
-                sourceLink: "https://github.com/realtime-tech/floor-is-lava",
-                demoLink: "https://realtime-tech.github.io/floor-is-lava/"
-            },
-            {
-                title: "Run A Country",
-                description: "Political simulation game. Take office as Commander in Chief and balance economy, military, diplomacy, and public approval.",
-                tags: ["Games", "Simulation"],
-                sourceLink: "https://github.com/realtime-tech/run-a-country",
-                demoLink: "https://realtime-tech.github.io/run-a-country/"
-            },
-            {
-                title: "CCNA Practice Test",
-                description: "Comprehensive CCNA certification practice with hundreds of questions, detailed explanations, and customizable test scenarios.",
-                tags: ["Education", "Networking"],
-                sourceLink: "https://github.com/realtime-tech/ccna-practice-test",
-                demoLink: "https://realtime-tech.github.io/ccna-practice-test/"
-            },
-            {
-                title: "Cisco VLANNER",
-                description: "Professional VLAN configuration calculator. Generate accurate VLAN schemes and copy production-ready commands instantly.",
-                tags: ["Networking", "Tools"],
-                sourceLink: "https://github.com/realtime-tech/cisco-vlanner",
-                demoLink: "https://realtime-tech.github.io/cisco-vlanner/"
-            },
-            {
-                title: "Clean Convert",
-                description: "Convert images and videos to any format with zero limits, complete privacy, and lightning-fast processing. No uploads required.",
-                tags: ["Tools"],
-                sourceLink: "https://github.com/realtime-tech/clean-convert",
-                demoLink: "https://realtime-tech.github.io/clean-convert/"
-            },
-            {
-                title: "Super SVG",
-                description: "A random stylized SVG generator",
-                tags: ["Tools", "Art"],
-                sourceLink: "https://github.com/realtime-tech/supersvg",
-                demoLink: "https://realtime-tech.github.io/supersvg/"
-            }
-        ];
-
+        let projects = [];
         let currentFilter = 'all';
         let currentSearch = '';
+
+        // Load projects from JSON file and filter for demos
+        fetch('projects.json')
+            .then(response => response.json())
+            .then(data => {
+                // Filter for projects with "Demo" tag
+                projects = data.filter(p => p.tags.includes('Demo'));
+                renderProjects();
+            })
+            .catch(error => {
+                console.error('Error loading projects:', error);
+            });
 
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
@@ -248,8 +160,6 @@
                 renderProjects();
             });
         });
-
-        renderProjects();
     </script>
 </body>
 </html>

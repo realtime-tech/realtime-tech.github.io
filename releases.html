@@ -85,15 +85,19 @@
 
     <script src="script.js"></script>
     <script>
-        const releases = [
-            {
-                title: "Ultimate Subnetting Calculator",
-                description: "The most comprehensive subnetting calculator available. Calculate ANY subnetting scenario in seconds with precision VLSM support and detailed network breakdowns. Trusted by network professionals and students worldwide.",
-                tags: ["Networking", "Cisco", "Calculator", "Production"],
-                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
-                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
-            }
-        ];
+        let releases = [];
+
+        // Load projects from JSON file and filter for releases
+        fetch('projects.json')
+            .then(response => response.json())
+            .then(data => {
+                // Filter for projects with "Release" tag
+                releases = data.filter(p => p.tags.includes('Release'));
+                renderReleases();
+            })
+            .catch(error => {
+                console.error('Error loading projects:', error);
+            });
 
         function renderReleases() {
             const grid = document.getElementById('releasesGrid');
@@ -118,8 +122,6 @@
                 </div>
             `).join('');
         }
-
-        renderReleases();
     </script>
 </body>
 </html>
