@@ -33,32 +33,7 @@
     </div>
 
     <section>
-        <div class="projects-constellation">
-            <div class="project-star">
-                <h3>Ultimate Subnetting Calculator</h3>
-                <p class="project-description">
-                    The most comprehensive subnetting calculator available. Calculate ANY subnetting scenario
-                    in seconds with precision VLSM support and detailed network breakdowns. Trusted by network
-                    professionals and students worldwide.
-                </p>
-                <div class="project-tags">
-                    <span class="tag">Networking</span>
-                    <span class="tag">Cisco</span>
-                    <span class="tag">Calculator</span>
-                    <span class="tag">Production</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/realtime-tech/Ultimate-Subnetting-Calculator" class="project-link source-link" target="_blank">
-                        <span>Source</span>
-                        <span>↗</span>
-                    </a>
-                    <a href="https://realtime-tech.github.io/Ultimate-Subnetting-Calculator" class="project-link demo-link" target="_blank">
-                        <span>Launch</span>
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+        <div class="projects-constellation" id="releasesGrid"></div>
 
         <div style="text-align: center; padding: 4rem 0;">
             <h3 style="font-size: 1.75rem; margin-bottom: 1rem; font-weight: 700;">More Releases Coming Soon</h3>
@@ -109,5 +84,42 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const releases = [
+            {
+                title: "Ultimate Subnetting Calculator",
+                description: "The most comprehensive subnetting calculator available. Calculate ANY subnetting scenario in seconds with precision VLSM support and detailed network breakdowns. Trusted by network professionals and students worldwide.",
+                tags: ["Networking", "Cisco", "Calculator", "Production"],
+                sourceLink: "https://github.com/realtime-tech/Ultimate-Subnetting-Calculator",
+                demoLink: "https://realtime-tech.github.io/Ultimate-Subnetting-Calculator"
+            }
+        ];
+
+        function renderReleases() {
+            const grid = document.getElementById('releasesGrid');
+
+            grid.innerHTML = releases.map(release => `
+                <div class="project-star">
+                    <h3>${release.title}</h3>
+                    <p class="project-description">${release.description}</p>
+                    <div class="project-tags">
+                        ${release.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                    <div class="project-links">
+                        <a href="${release.sourceLink}" class="project-link source-link" target="_blank">
+                            <span>Source</span>
+                            <span>↗</span>
+                        </a>
+                        <a href="${release.demoLink}" class="project-link demo-link" target="_blank">
+                            <span>Launch</span>
+                            <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderReleases();
+    </script>
 </body>
 </html>
